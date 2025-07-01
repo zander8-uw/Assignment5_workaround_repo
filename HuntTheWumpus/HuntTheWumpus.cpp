@@ -212,54 +212,63 @@ int main()
         const auto stringTokens = SplitString(input, " \t\n");
 
         const auto command = ToLower(stringTokens[0]);
-
-        if (command[0] == 'm')
+        try
         {
-            if (stringTokens.size() < 2)
+            if (command[0] == 'm')
             {
-                std::cout << "A Move command must be followed by the destination cave id.\n";
-                continue;
-            }
-
-            // Second token is a destination.
-            const auto destCave = std::stoi(stringTokens[1]);
-
-            dungeon.MakeMove(HuntTheWumpus::DungeonMove::Move, { destCave });
-        }
-
-        if (command[0] == 's')
-        {
-            if (stringTokens.size() < 2)
-            {
-                std::cout << "A Shoot command must be followed by a list of caves for the arrow to go through.\n";
-                continue;
-            }
-
-            // Remaining tokens is the desired arrow path.
-            std::vector<int> path;
-            auto firstToken = false;
-
-            for (auto&& token : stringTokens)
-            {
-                if (!firstToken)
+                if (stringTokens.size() < 2)
                 {
-                    firstToken = true;
+                    std::cout << "A Move command must be followed by the destination cave id.\n";
                     continue;
                 }
 
-                path.push_back(std::stoi(token));
+                // Second token is a destination.
+                const auto destCave = std::stoi(stringTokens[1]);
+
+                dungeon.MakeMove(HuntTheWumpus::DungeonMove::Move, { destCave });
             }
+            else if (command[0] == 's')
+            {
+                if (stringTokens.size() < 2)
+                {
+                    std::cout << "A Shoot command must be followed by a list of caves for the arrow to go through.\n";
+                    continue;
+                }
 
-            path.resize(std::min(path.size(), PathLimit));
+                // Remaining tokens is the desired arrow path.
+                std::vector<int> path;
+                auto firstToken = false;
 
-            dungeon.MakeMove(HuntTheWumpus::DungeonMove::Shoot, path);
+                for (auto&& token : stringTokens)
+                {
+                    if (!firstToken)
+                    {
+                        firstToken = true;
+                        continue;
+                    }
+
+                    path.push_back(std::stoi(token));
+                }
+
+                path.resize(std::min(path.size(), PathLimit));
+
+                dungeon.MakeMove(HuntTheWumpus::DungeonMove::Shoot, path);
+            }
+            else if (command[0] == 'q' || command[0] == 'e' || command[0] == 'x')
+            {
+                std::cout << "Exiting.\n";
+                change.GameOver(false);
+            }
+            else
+            {
+                throw std::invalid_argument("");
+            }
         }
-
-        if (command[0] == 'q' || command[0] == 'e' || command[0] == 'x')
+        catch(const std::invalid_argument&)
         {
-            std::cout << "Exiting.\n";
-            change.GameOver(false);
+            std::cout << "Invalid input, please try again.\n";
         }
+        
     }
 
     return 0;

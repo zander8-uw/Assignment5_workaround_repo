@@ -18,6 +18,31 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="Cave.cpp" />
+    <ClCompile Include="Denizen.cpp" />
+    <ClCompile Include="Dungeon.cpp" />
+    <ClCompile Include="Hunter.cpp" />
+    <ClCompile Include="Pit.cpp" />
+    <ClCompile Include="UserNotification.cpp" />
+    <ClCompile Include="Wumpus.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arrow.h" />
+    <ClInclude Include="Bat.h" />
+    <ClInclude Include="Cave.h" />
+    <ClInclude Include="Context.h" />
+    <ClInclude Include="Denizen.h" />
+    <ClInclude Include="Dungeon.h" />
+    <ClInclude Include="GameStateObservation.h" />
+    <ClInclude Include="Hunter.h" />
+    <ClInclude Include="Pit.h" />
+    <ClInclude Include="RandomProvider.h" />
+    <ClInclude Include="UserNotification.h" />
+    <ClInclude Include="Wumpus.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -87,31 +112,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Arrow.cpp" />
-    <ClCompile Include="Bat.cpp" />
-    <ClCompile Include="Cave.cpp" />
-    <ClCompile Include="Dungeon.cpp" />
-    <ClCompile Include="Hunter.cpp" />
-    <ClCompile Include="Pit.cpp" />
-    <ClCompile Include="Denizen.cpp" />
-    <ClCompile Include="UserNotification.cpp" />
-    <ClCompile Include="Wumpus.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Arrow.h" />
-    <ClInclude Include="Bat.h" />
-    <ClInclude Include="Cave.h" />
-    <ClInclude Include="Context.h" />
-    <ClInclude Include="Dungeon.h" />
-    <ClInclude Include="GameStateObservation.h" />
-    <ClInclude Include="Hunter.h" />
-    <ClInclude Include="Pit.h" />
-    <ClInclude Include="RandomProvider.h" />
-    <ClInclude Include="Denizen.h" />
-    <ClInclude Include="UserNotification.h" />
-    <ClInclude Include="Wumpus.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
