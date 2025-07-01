@@ -201,20 +201,26 @@ int main()
 
     while (change.IsPlaying())
     {
+        
         // Parse input.
         std::string input;
 
         std::cout << "Command? " << std::flush;
 
-        std::getline(std::cin, input);
-
-        // Split into strings.
-        const auto stringTokens = SplitString(input, " \t\n");
-
-        const auto command = ToLower(stringTokens[0]);
         try
         {
-            if (command[0] == 'm')
+            std::getline(std::cin, input);
+            // Split into strings.
+            const auto stringTokens = SplitString(input, " \t\n");
+
+            if (stringTokens.size() == 0)
+            {
+                throw std::runtime_error("");
+            }
+
+            const auto command = ToLower(stringTokens[0]);
+
+            if (command[0] == 'm' && command.length() != 0)
             {
                 if (stringTokens.size() < 2)
                 {
@@ -267,6 +273,10 @@ int main()
         catch(const std::invalid_argument&)
         {
             std::cout << "Invalid input, please try again.\n";
+        }
+        catch (const std::runtime_error&)
+        {
+            std::cout << "You didn't type anything.\n";
         }
         
     }
