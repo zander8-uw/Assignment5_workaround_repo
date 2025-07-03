@@ -1,4 +1,3 @@
-
 #include "Context.h"
 #include "Dungeon.h"
 #include "RandomProvider.h"
@@ -201,7 +200,7 @@ int main()
 
     while (change.IsPlaying())
     {
-        
+
         // Parse input.
         std::string input;
 
@@ -228,8 +227,11 @@ int main()
                     continue;
                 }
 
+
                 // Second token is a destination.
                 const auto destCave = std::stoi(stringTokens[1]);
+
+
 
                 dungeon.MakeMove(HuntTheWumpus::DungeonMove::Move, { destCave });
             }
@@ -270,7 +272,7 @@ int main()
                 throw std::invalid_argument("");
             }
         }
-        catch(const std::invalid_argument&)
+        catch (const std::invalid_argument&)
         {
             std::cout << "Invalid input, please try again.\n";
         }
@@ -278,7 +280,11 @@ int main()
         {
             std::cout << "You didn't type anything.\n";
         }
-        
+        catch (const std::out_of_range&)
+        {
+            std::cout << "That number is out of range.\n";
+        }
+
     }
 
     return 0;
