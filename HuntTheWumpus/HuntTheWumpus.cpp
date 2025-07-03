@@ -215,6 +215,7 @@ int main()
             if (stringTokens.size() == 0)
             {
                 throw std::runtime_error("");
+                continue;
             }
 
             const auto command = ToLower(stringTokens[0]);
