@@ -268,12 +268,8 @@ int main()
             }
             else
             {
-                throw std::invalid_argument("");
+                std::cout << "Invalid input, please try again.\n"; // made change here
             }
-        }
-        catch (const std::invalid_argument&)
-        {
-            std::cout << "Invalid input, please try again.\n";
         }
         catch (const std::runtime_error&)
         {
