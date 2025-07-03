@@ -220,7 +220,7 @@ int main()
 
             const auto command = ToLower(stringTokens[0]);
 
-            if (command[0] == 'm' && command.length() != 0)
+            if (command[0] == 'm')
             {
                 if (stringTokens.size() < 2)
                 {
