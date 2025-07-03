@@ -15,6 +15,7 @@
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <algorithm>
+#include <stdexcept>
 
 namespace HuntTheWumpus
 {
@@ -157,6 +158,21 @@ namespace HuntTheWumpus
 
     void Dungeon::MakeMove(const DungeonMove operation, const std::vector<int>& destinationIds)
     {
+        // Guard against an empty destinationIds vector
+        try
+        {
+            if (destinationIds.empty())
+            {
+                throw std::logic_error("destinationIds is empty.");
+            }
+        }
+        catch (const std::logic_error&)
+        {
+            // Adds a -1 to the destination, since -1 will always result in no move actually happening.
+            const_cast<std::vector<int>&>(destinationIds).push_back(-1);
+        }
+
+
         // First, find the hunter.
         const auto hunter = std::dynamic_pointer_cast<Hunter>(m_caveDenizens.at({ Category::Hunter, 0 }));
 

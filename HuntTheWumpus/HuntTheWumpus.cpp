@@ -231,8 +231,6 @@ int main()
                 // Second token is a destination.
                 const auto destCave = std::stoi(stringTokens[1]);
 
-
-
                 dungeon.MakeMove(HuntTheWumpus::DungeonMove::Move, { destCave });
             }
             else if (command[0] == 's')
