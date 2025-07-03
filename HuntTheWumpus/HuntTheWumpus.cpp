@@ -220,7 +220,7 @@ int main()
 
             const auto command = ToLower(stringTokens[0]);
 
-            if (command[0] == 'm')
+            if (command[0] == 'm') // removed a line, I had additionally if !command.empty() as a check, but I think its unneeded since I checked stringTokens a couple lines back. 
             {
                 if (stringTokens.size() < 2)
                 {
