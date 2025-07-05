@@ -255,8 +255,30 @@ namespace TestHuntTheWumpus
 
         // Show that we hit the Wumpus!
         CHECK(wumpusShotCalled)
-            CHECK(!env.m_state.m_isPlayingResult);
+        CHECK(!env.m_state.m_isPlayingResult);
         CHECK(env.m_state.m_gameOverCalled);
         CHECK(env.m_state.m_gameOverResult);
+    }
+
+    TEST(DungeonSuite, Dungeon_MakeMove_Exception_Throw)
+    {
+        TestEnvironment env;
+
+        env.m_provider.SetCaveSequence({ 1, 2, 15, 4, 5, 6 });
+
+        HuntTheWumpus::Dungeon dungeon(env.m_context);
+
+        std::string errorMessage = "This a test for MakeMove.";
+
+        try
+        {
+            dungeon.MakeMove(HuntTheWumpus::DungeonMove::Shoot, {});
+        }
+        catch (const std::logic_error& e)
+        {
+            errorMessage = e.what();
+        }
+
+        CHECK_EQUAL("destinationIds is empty.", errorMessage);
     }
 }

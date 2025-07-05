@@ -28,7 +28,8 @@ namespace HuntTheWumpus
             HunterShot,
             CaveEntered,
             NeighboringCaves,
-            ReportIllegalMove
+            ReportIllegalMove,
+            TEST_ERROR
         };
 
         UserNotification() = default;

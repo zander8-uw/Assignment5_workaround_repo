@@ -1,4 +1,5 @@
 #include "UserNotification.h"
+#include <stdexcept>
 
 namespace
 {
@@ -15,16 +16,31 @@ namespace HuntTheWumpus
 {
     void UserNotification::AddCallback(const Notification category, std::function<void()>&& callback)
     {
+        if (callback == nullptr)
+        {
+            throw std::invalid_argument("callback is null, bad input.");
+        }
+
         m_callbacks.insert_or_assign(category, std::move(callback));
     }
 
     void UserNotification::AddCallback(const Notification category, std::function<void(int)>&& callback)
     {
+        if (callback == nullptr)
+        {
+            throw std::invalid_argument("callback is null, bad input.");
+        }
+
         m_callbacks.insert_or_assign(category, std::move(callback));
     }
 
     void UserNotification::AddCallback(const Notification category, std::function<void(const std::vector<int>&)>&& callback)
     {
+        if (callback == nullptr)
+        {
+            throw std::invalid_argument("callback is null, bad input.");
+        }
+
         m_callbacks.insert_or_assign(category, std::move(callback));
     }
 

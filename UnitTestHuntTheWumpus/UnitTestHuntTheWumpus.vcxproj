@@ -97,6 +97,7 @@
     <ClCompile Include="TestHelperTestEnvironment.cpp" />
     <ClCompile Include="TestHunter.cpp" />
     <ClCompile Include="TestPit.cpp" />
+    <ClCompile Include="TestUserNotification.cpp" />
     <ClCompile Include="TestWumpus.cpp" />
     <ClCompile Include="UnitTestHuntTheWumpus.cpp" />
   </ItemGroup>

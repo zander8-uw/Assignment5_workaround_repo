@@ -1,3 +1,5 @@
+#include <TestHarness.h>
+
 #include "TestHelperTestEnvironment.h"
 
 namespace TestHuntTheWumpus

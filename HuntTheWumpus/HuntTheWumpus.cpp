@@ -228,7 +228,6 @@ int main()
                     continue;
                 }
 
-
                 // Second token is a destination.
                 const auto destCave = std::stoi(stringTokens[1]);
 
@@ -278,6 +277,10 @@ int main()
         catch (const std::out_of_range&)
         {
             std::cout << "That number is out of range.\n";
+        }
+        catch (const std::logic_error&)
+        {
+            std::cout << "Invalid input, unable to perform that function.\n";
         }
 
     }
